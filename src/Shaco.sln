@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shaco.Api", "Shaco.Api\Shaco.Api.csproj", "{36AB6AA7-E14B-4A98-B108-39039DD6BC4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shaco.Contract", "Shaco.Contract\Shaco.Contract.csproj", "{99146730-3467-47C5-8150-8DDE08AE278F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shaco.cli", "Shaco.cli\Shaco.cli.csproj", "{F8D9015A-B11C-48F6-89D6-536207FC4DB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36AB6AA7-E14B-4A98-B108-39039DD6BC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36AB6AA7-E14B-4A98-B108-39039DD6BC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36AB6AA7-E14B-4A98-B108-39039DD6BC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36AB6AA7-E14B-4A98-B108-39039DD6BC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99146730-3467-47C5-8150-8DDE08AE278F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99146730-3467-47C5-8150-8DDE08AE278F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99146730-3467-47C5-8150-8DDE08AE278F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99146730-3467-47C5-8150-8DDE08AE278F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D9015A-B11C-48F6-89D6-536207FC4DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D9015A-B11C-48F6-89D6-536207FC4DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D9015A-B11C-48F6-89D6-536207FC4DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D9015A-B11C-48F6-89D6-536207FC4DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
