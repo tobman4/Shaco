@@ -32,7 +32,6 @@ public class BasicAuthentication : AuthenticationHandler<BasicAuthenticationOpt>
     }
 
     _password = Hash(pw);
-    _logger.LogInformation($"Password: {pw}");
   }
 
   private string[]? GetAuth() {
