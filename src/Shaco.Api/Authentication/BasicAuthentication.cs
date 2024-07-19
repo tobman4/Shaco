@@ -13,16 +13,26 @@ public class BasicAuthenticationOpt : AuthenticationSchemeOptions {
 public class BasicAuthentication : AuthenticationHandler<BasicAuthenticationOpt> {
   private readonly ILogger<BasicAuthentication> _logger;
 
-  private readonly string _password = "47C06890F1915956B82C1CCD5D90950ECB8F8E45573CAFC228C446C5DBB48F12";
+  private readonly string _password;
 
   public BasicAuthentication(
     IOptionsMonitor<BasicAuthenticationOpt> options,
     ILoggerFactory logger,
     UrlEncoder encoder,
-    ISystemClock clock
+    ISystemClock clock,
+    IConfiguration configuration
   ) : base(options,logger, encoder, clock) {
   
     _logger = logger.CreateLogger<BasicAuthentication>();
+
+    var pw = configuration.GetValue<string>("Password");
+    if(string.IsNullOrWhiteSpace(pw)) {
+      _logger.LogWarning("Password not set");
+      pw = "Shaco";
+    }
+
+    _password = Hash(pw);
+    _logger.LogInformation($"Password: {pw}");
   }
 
   private string[]? GetAuth() {
@@ -67,7 +77,6 @@ public class BasicAuthentication : AuthenticationHandler<BasicAuthenticationOpt>
       claimsPrincipal,
       Scheme.Name
     );
-    
     return AuthenticateResult.Success(ticket);
   }
 }
