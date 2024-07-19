@@ -18,7 +18,8 @@ public class LinkController : Controller {
     _logger = logger;
     _repo = repo;
   }
-  
+ 
+
   [Authorize("Admin")]
   [HttpGet]
   public IActionResult GetAll() {
