@@ -14,7 +14,7 @@ link.setup_parser(link_parser)
 
 args = parser.parse_args()
 
-if __name__ == "__main__":
+def main():
   if("func" not in args):
     print("No command")
     exit(0)
@@ -22,3 +22,6 @@ if __name__ == "__main__":
   args.session = ApiSession(args.base)
 
   args.func(args)
+
+if __name__ == "__main__":
+  main()
