@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 
-from requests import Session
+from util import ApiSession
 
 import link
 
@@ -19,6 +19,6 @@ if __name__ == "__main__":
     print("No command")
     exit(0)
 
-  args.session = Session()
+  args.session = ApiSession(args.base)
 
   args.func(args)

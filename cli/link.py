@@ -35,25 +35,17 @@ def setup_parser(parser: ArgumentParser):
   )
 
 def list(args: Namespace):
-  result = args.session.get(
-    url=f"{args.base}/Link"
-  )
-
-  if(not result.ok):
-    raise Exception(f"Got {result.status_code} from server")
-
-  data = result.json()
+  data = args.session.get("Link")
 
   for link in data:
     if(args.id):
       print(f"{link.get('id')}: ", end="")
 
-
     print(f"{link.get('name')} > {link.get('url')}")
 
 def add(args: Namespace):
-  result = args.session.post(
-    url=f"{args.base}/Link",
+  args.session.post(
+    url=f"Link",
     headers={
       "Content-Type": "application/json"
     },
@@ -63,15 +55,7 @@ def add(args: Namespace):
     })
   )
 
-  if(not result.ok):
-    raise Exception(f"Got {result.status_code} from server")
-
 def delete(args: Namespace):
-  result = args.session.delete(
-    url=f"{args.base}/Link/{args.id}"
-  )
-
-  if(not result.ok):
-    raise Exception(f"Got {result.status_code} from server")
+  args.session.delete(f"Link/{args.id}")
 
   print("Link deleted")
