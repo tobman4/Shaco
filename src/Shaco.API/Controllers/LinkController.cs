@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shaco.API.Data;
 using Shaco.API.Models;
 
 namespace Shaco.API.Controllers;
 
+[Authorize]
 [Route("Link")]
 public class LinkController(
   DB db,
