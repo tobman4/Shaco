@@ -6,18 +6,18 @@ namespace Shaco.API.Controllers;
 
 [Route("User")]
 public class UserController(
-  UserService userService
+  UserService userService,
+  TokenService tokenService
 ) : Controller { 
 
   private readonly UserService _us = userService;
+  private readonly TokenService _ts = tokenService;
 
 
   [HttpPost]
   public IActionResult CreateUser(
     [FromBody]UserAuth data
   ) {
-    Console.WriteLine(data.Username);
-    Console.WriteLine(data.Password);
     var user = _us.AddUser(data.Username, data.Password);
     return base.Ok();
   }
@@ -30,7 +30,8 @@ public class UserController(
     if(user is null)
       return base.Unauthorized();
 
-    //TODO: Create token
+    var token = _ts.CreateToken(user);
+    Response.Headers["X-Token"] = token;
     return base.Ok();
   }
 
