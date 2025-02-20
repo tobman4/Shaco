@@ -17,7 +17,11 @@ using(var scope = app.Services.CreateAsyncScope()) {
   var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
 
   logger.LogDebug("DB: {con}", db.Database.GetConnectionString());
-  await db.Database.MigrateAsync();
+  if(db.Database.GetPendingMigrations().Count() > 0) {
+    logger.LogInformation("Updating db");
+    await db.Database.MigrateAsync();
+  }
+
 }
 
 app.Run();
