@@ -15,7 +15,10 @@ class ApiSession(Session):
 
     if(not result.ok):
       raise Exception(f"Got {result.status_code} from server");
-
+    
+    if(len(result.content) == 0):
+      return None
+    
     return result.json()
 
 class Args(Namespace):
