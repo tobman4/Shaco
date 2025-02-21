@@ -1,2 +1,4 @@
 bin
 obj
+act
+__pycache__
