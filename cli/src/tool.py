@@ -4,9 +4,10 @@ from util import ApiSession
 
 import api
 import link
+import user
 
 parser = ArgumentParser()
-parser.set_defaults(base="http://127.0.0.1:5148")
+parser.set_defaults(no_auth=False)
 
 parser.add_argument(
   "-s", "--server",
@@ -20,6 +21,9 @@ subparser = parser.add_subparsers(dest="command")
 link_parser = subparser.add_parser("link", help="Manage links")
 link.setup_parser(link_parser)
 
+user_parser = subparser.add_parser("user", help="Manage users")
+user.setup_parser(user_parser)
+
 args = parser.parse_args()
 
 def main():
@@ -27,9 +31,11 @@ def main():
     print("No command")
     exit(0)
   
-  auth = api.login(args.base)
   args.session = ApiSession(args.base)
-  args.session.headers["Authorization"] = f"Bearer {auth}"
+
+  if(not args.no_auth):
+    auth = api.login(args.base)
+    args.session.headers["Authorization"] = f"Bearer {auth}"
 
   args.func(args)
 
