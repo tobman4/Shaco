@@ -8,6 +8,13 @@ import link
 parser = ArgumentParser()
 parser.set_defaults(base="http://127.0.0.1:5148")
 
+parser.add_argument(
+  "-s", "--server",
+  help="Base url of server. Default https://shaco.tobman.no",
+  default="https://shaco.tobman.no",
+  dest="base"
+)
+
 subparser = parser.add_subparsers(dest="command")
 
 link_parser = subparser.add_parser("link", help="Manage links")
