@@ -63,4 +63,14 @@ public class UserService(
     return user;
   }
 
+  public IEnumerable<User> GetAll() =>
+    _db.Users.ToArray();
+
+  public User? tryGetByID(Guid id) =>
+    _db.Users.SingleOrDefault(e => e.ID == id);
+
+  public void DeleteUser(User user) {
+    _db.Users.Remove(user);
+    _db.SaveChanges();
+  }
 }
