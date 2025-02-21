@@ -1,5 +1,7 @@
 global using Shaco.API.Data.Models;
+
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Shaco.API.Data;
