@@ -19,7 +19,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     ValidateAudience = true,
     ValidateLifetime = true,
     ValidateIssuerSigningKey = true,
-
+    
+    RoleClaimType = "Role",
     ValidIssuer = "Shaco.API",
     ValidAudience = "Shaco.API",
     IssuerSigningKey = new SymmetricSecurityKey(
