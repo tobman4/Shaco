@@ -9,7 +9,7 @@ def setup_parser(parser: ArgumentParser):
 
   add_parser = action_parser.add_parser("add")
   add_parser.set_defaults(func=add_user)
-  add_parser.set_defaults(no_auth=False)
+  add_parser.set_defaults(no_auth=True)
 
   list_parser = action_parser.add_parser("list")
   list_parser.set_defaults(func=list)
