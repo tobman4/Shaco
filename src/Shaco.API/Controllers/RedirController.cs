@@ -13,7 +13,18 @@ public class RedirectController(
   private readonly ILogger _logger = logger;
 
   [HttpGet("{name}")]
-  public IActionResult FollowLink(string name) {
+ public IActionResult FollowLink(string name) {
+   var isDisc = Request
+     .Headers
+     .UserAgent
+     .Single()?
+     .ToString()
+     .ToUpper()
+     .Contains("DISCORD");
+
+    if(isDisc == true)
+      return base.Ok();
+
     if(_db.Links.SingleOrDefault(e => e.Name == name) is not Link link)
       return base.NotFound();
     
