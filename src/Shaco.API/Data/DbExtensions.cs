@@ -7,6 +7,10 @@ static class DbExtensions {
   public static void AddDB(this IServiceCollection services, IConfiguration config) {
     if(!string.IsNullOrWhiteSpace(config["Sqlite"]))
       services.AddDbContext<DB,SqliteDB>();
+
+    else if(!string.IsNullOrWhiteSpace(config["Postgres"]))
+      services.AddDbContext<DB,PostgresDB>();
+
     else
       throw new Exception("No db config");
   }
