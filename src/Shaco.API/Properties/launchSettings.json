@@ -7,7 +7,9 @@
       "launchBrowser": false,
       "applicationUrl": "http://localhost:5148",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_Sqlite": "/var/dev/shaco.db",
+        "DOTNET_Secret": "wai1coathaenah8xoX9zey4aiciaweih5ievuSh9seid3Cee4A"
       }
     },
     "https": {
