@@ -8,7 +8,7 @@ using Shaco.API.Data;
 
 #nullable disable
 
-namespace Shaco.API.Migrations
+namespace Shaco.API.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteDB))]
     [Migration("20250218105613_AddUserTable")]

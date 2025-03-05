@@ -7,7 +7,7 @@ using Shaco.API.Data;
 
 #nullable disable
 
-namespace Shaco.API.Migrations
+namespace Shaco.API.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteDB))]
     partial class SqliteDBModelSnapshot : ModelSnapshot
