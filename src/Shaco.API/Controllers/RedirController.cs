@@ -12,7 +12,7 @@ public class RedirectController(
   private readonly DB _db = db;
   private readonly ILogger _logger = logger;
 
-  [HttpGet("{name}")]
+ [HttpGet("{name}")]
  public IActionResult FollowLink(string name) {
    var isDisc = Request
      .Headers
