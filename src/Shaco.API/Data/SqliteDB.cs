@@ -9,7 +9,7 @@ public class SqliteDB : DB {
   public SqliteDB(
     IConfiguration config
   ) {
-    var path = config["DB"];
+    var path = config["Sqlite"];
     if(string.IsNullOrWhiteSpace(path))
       throw new Exception("No db path");
 

@@ -1,7 +1,6 @@
 global using Shaco.API.Data.Models;
 
 using System.Text;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Shaco.API.Data;
@@ -34,7 +33,7 @@ builder.Services.AddAuthorization();
 
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<UserService>();
-builder.Services.AddDbContext<DB, SqliteDB>();
+builder.Services.AddDB(builder.Configuration);
 
 var app = builder.Build();
 app.UseHttpsRedirection();
@@ -43,17 +42,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-using(var scope = app.Services.CreateAsyncScope()) {
-  var db = scope.ServiceProvider.GetRequiredService<DB>();
-  var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-
-  logger.LogDebug("DB: {con}", db.Database.GetConnectionString());
-  if(db.Database.GetPendingMigrations().Count() > 0) {
-    logger.LogInformation("Updating db");
-    await db.Database.MigrateAsync();
-  }
-
-}
+app.SetupDB();
 
 app.Run();
